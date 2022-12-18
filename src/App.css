@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.main_block {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header_table {
+  text-align: left;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

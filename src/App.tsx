@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import './App.css'
+import {students} from "./components/Data/Data"
+import {GroupStudents} from './components/Group/Group'
+import {InputTest} from "./components/Input/Input";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+let arrNumGroup = students.map(el => el.group)
+let NumberGroups = Math.max.apply(null, arrNumGroup);
+
+const App = () => {
+
+    let [massages, setMessage] = useState([
+        {message: "message1"},
+        {message: "message2"},
+        {message: "message3"}
+    ])
+
+    const addMassage = (title: string) => {
+        let newMessege = {message: title}
+        setMessage([newMessege, ...massages])
+    }
+
+    return (
+        <div className="main_block">
+            <InputTest massages={massages} addMassage={addMassage}/>
+            <h1>Журнал студентов факультета N</h1>
+            <GroupStudents liststudents={students} numbergroup={NumberGroups} />
+        </div>
+    );
 }
 
 export default App;
